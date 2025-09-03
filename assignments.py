@@ -34,7 +34,6 @@ def get_content(html):
         due_date = row.find('span',class_='screenreader-only').get_text(strip=True)
         assignments.loc[len(assignments)] = [title, due_date]
     dt_parse(assignments)
-    print(assignments)
     assignments.to_csv('assignmentScraper/assignments.csv', index=False)
     
 
