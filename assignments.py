@@ -10,7 +10,7 @@ def dt_parse(df):
     for i in range(0, len(df), 1):
         date_str = df.iloc[i, 1]
         date_str = date_str.split()
-        #print(date_str)
+        print(date_str)
         df.iloc[i, 0] = df.iloc[i, 0] + " due " + date_str[2] + " " + date_str[3]
         for month in monthlist:
             if date_str[0] in month:
@@ -20,7 +20,7 @@ def dt_parse(df):
         if int(date_str[0]) < 7:
             year = "2026"
         df.iloc[i, 1] = date_str[0]+"/"+date_str[1]+"/"+year
-        #print(df.iloc[i, 0]+" | "+df.iloc[i, 1])
+        print(df.iloc[i, 0]+" | "+df.iloc[i, 1])
     
     #df['due_date'] = pd.to_datetime(df['due_date'], errors='coerce')
     #print(df)
@@ -28,14 +28,20 @@ def dt_parse(df):
 def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
     assignments = pd.DataFrame(columns=['title', 'due_date'])
+    #title
     elements = soup.find_all(class_="ig-info")
     for row in elements:
         title = row.find(class_='ig-title').get_text(strip=True)
+        assignments.loc[len(assignments)] = [title, ""]
+    #due date
+    elements2 = soup.find_all(class_="ig-details__item assignment-date-due")
+    print(elements2)
+    for row in elements2:
         due_date = row.find('span',class_='screenreader-only').get_text(strip=True)
-        assignments.loc[len(assignments)] = [title, due_date]
-    dt_parse(assignments)
+        assignments.iloc[elements2.index(row), 1] = due_date
     print(assignments)
-    assignments.to_csv('assignmentScraper/assignments.csv', index=False)
+    #dt_parse(assignments)
+    #assignments.to_csv('assignmentScraper/assignments.csv', index=False)
     
 
 def parse():
