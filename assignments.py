@@ -35,13 +35,14 @@ def get_content(html):
         assignments.loc[len(assignments)] = [title, ""]
     #due date
     elements2 = soup.find_all(class_="ig-details__item assignment-date-due")
-    print(elements2)
-    for row in elements2:
-        due_date = row.find('span',class_='screenreader-only').get_text(strip=True)
-        assignments.iloc[elements2.index(row), 1] = due_date
+    duedates = []
+    for i in range(0, len(elements2), 1):
+        due_date = elements2[i].find('span',class_='screenreader-only').get_text(strip=True)
+        duedates.append(due_date)
+        assignments.iloc[i, 1] = duedates[i]
     print(assignments)
-    #dt_parse(assignments)
-    #assignments.to_csv('assignmentScraper/assignments.csv', index=False)
+    dt_parse(assignments)
+    assignments.to_csv('assignmentScraper/assignments.csv', index=False)
     
 
 def parse():
