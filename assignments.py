@@ -42,7 +42,7 @@ def get_content(html):
         assignments.iloc[i, 1] = duedates[i]
     print(assignments)
     dt_parse(assignments)
-    assignments.to_csv('assignmentScraper/mth214_assignments.csv', index=False)
+    assignments.to_csv('assignmentScraper/assignments.csv', index=False)
     
 
 def parse():
@@ -51,3 +51,4 @@ def parse():
     get_content(html)
 
 parse()
+
