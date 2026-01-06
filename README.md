@@ -4,7 +4,9 @@
 2. Replace the HTML string variable with the directory path
 3. Run the code. You now have all your assignments and due dates in assignments.xlsx :)
 
+
 **Directions for adding to Notion calendar**
+NOTE: this is for the calendar database view, not the seperate Notion calendar app
 After completing the steps above:
 1. Open assignments.xlsx
 2. Open Notion calendar in table view
