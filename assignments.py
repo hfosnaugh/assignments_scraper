@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 
-HTML = "assignmentScraper/assignments_scraper/Assignments_ PHYSICS 140 003_006 FA 2025.htm"
+HTML = "assignments_scraper/Assignments_ ENVIRON 109 001 WN 2026.htm"
 
 #need to do custom parsing
 def dt_parse(df):
@@ -42,7 +42,7 @@ def get_content(html):
         assignments.iloc[i, 1] = duedates[i]
     dt_parse(assignments)
     print(assignments)
-    assignments.to_csv('assignmentScraper/PHY140_assignments.csv', index=False)
+    assignments.to_excel('assignments_scraper/assignments.xlsx', index=False)
     
 
 def parse():
