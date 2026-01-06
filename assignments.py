@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 
-HTML = "assignmentScraper/assignments_scraper/Assignments_ MATH 214 FA 2025.htm"
+HTML = "assignments_scraper/Assignments_ ENVIRON 109 001 WN 2026.htm"
 
 def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
@@ -18,5 +18,6 @@ def parse():
     with open(HTML, 'r', encoding='utf-8') as file:
         html = file.read()
     get_content(html)
+
 
 parse()
