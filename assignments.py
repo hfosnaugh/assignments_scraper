@@ -1,7 +1,8 @@
 from bs4 import BeautifulSoup
 import pandas as pd
 
-HTML = "assignments_scraper/Assignments_ ENVIRON 109 001 WN 2026.htm"
+#Put filepaths for assignments html here
+class_assignment_pages = ["./Assignments_ EECS 203 WN 2026.htm"]
 
 #need to do custom parsing
 def dt_parse(df):
@@ -42,14 +43,19 @@ def get_content(html):
         assignments.iloc[i, 1] = duedates[i]
     dt_parse(assignments)
     print(assignments)
-    assignments.to_excel('assignments_scraper/assignments.xlsx', index=False)
+    num += 1
+    excel_filename = "assignments"+num+".xlsx"    
+    assignments.to_excel(excel_filename, index=False)
     
 
-def parse():
-    with open(HTML, 'r', encoding='utf-8') as file:
+def parse(html_var ):
+    with open(html_var, 'r', encoding='utf-8') as file:
         html = file.read()
     get_content(html)
 
+num = 0
+for page in class_assignment_pages:
+    parse(page)
 
-parse()
-
+#TEST CODE WHEN I GET BACK
+#Also might try turning it into a webapp
