@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 
 #Put filepaths for assignments html here
-class_assignment_pages = ["./Assignments_ EECS 203 WN 2026.htm"]
+class_assignment_pages = ["assignments_scraper/Assignments_ EECS 203 WN 2026.htm"]
 
 #need to do custom parsing
 def dt_parse(df):
@@ -38,7 +38,7 @@ def get_content(html):
     elements2 = soup.find_all(class_="ig-details__item assignment-date-due")
     duedates = []
     for i in range(0, len(elements2), 1):
-        due_date = elements2[i].find('span',class_='screenreader-only').get_text(strip=True)
+        due_date = elements2[i].find('span', class_='screenreader-only').get_text(strip=True)
         duedates.append(due_date)
         assignments.iloc[i, 1] = duedates[i]
     dt_parse(assignments)
