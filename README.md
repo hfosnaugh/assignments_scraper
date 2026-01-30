@@ -1,6 +1,7 @@
 **Directions for use**
 
-Set up .venv --> ```python -m pip install beautifulsoup4, pandas, openpyxl```
+Open a new powershell terminal in VS Code to activate the venv
+To install dependencies --> ```python -m pip install beautifulsoup4, pandas, openpyxl```
 1. Download Assignments page on Canvas
 2. Replace the HTML string variable with the filepath of the assignments html
 3. Run the code. You now have all your assignments and due dates in assignments.xlsx :)
