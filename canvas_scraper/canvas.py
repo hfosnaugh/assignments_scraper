@@ -19,7 +19,7 @@ def extract_files(text):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download all content from Canvas")
     parser.add_argument("url", help="URL to the Canvas website, e.g. https://canvas.utwente.nl")
-    parser.add_argument("token", help="Token generated in the settings page on Canvas")
+    parser.add_argument("token", help="Token generated in the settings page on Canvas") # --> !!! Not allowed to create my own tokens :( can do this thorugh OAuth however, will just be more of a pain: https://developerdocs.instructure.com/services/canvas
     parser.add_argument("output", help="Path to the output folder, e.g. output/")
     args = parser.parse_args()
 
